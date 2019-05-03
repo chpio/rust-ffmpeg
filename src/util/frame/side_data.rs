@@ -32,6 +32,8 @@ pub enum Type {
     QPTableProperties,
     #[cfg(feature = "ffmpeg4")]
     QPTableData,
+
+    S12MTimeCode,
 }
 
 impl Type {
@@ -69,6 +71,8 @@ impl From<AVFrameSideDataType> for Type {
             AV_FRAME_DATA_QP_TABLE_PROPERTIES => Type::QPTableProperties,
             #[cfg(feature = "ffmpeg4")]
             AV_FRAME_DATA_QP_TABLE_DATA => Type::QPTableData,
+
+            V_FRAME_DATA_S12M_TIMECODE => Type::S12MTimeCode,
         }
     }
 }
@@ -99,6 +103,8 @@ impl Into<AVFrameSideDataType> for Type {
             Type::QPTableProperties => AV_FRAME_DATA_QP_TABLE_PROPERTIES,
             #[cfg(feature = "ffmpeg4")]
             Type::QPTableData => AV_FRAME_DATA_QP_TABLE_DATA,
+
+            Type::S12MTimeCode => AV_FRAME_DATA_S12M_TIMECODE,
         }
     }
 }
